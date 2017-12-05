@@ -86,9 +86,8 @@ def ra_install():
     os.chdir(os.path.join(install_dir, "vendor/rala/build"))
     wait(subprocess.Popen(["cmake", "-DCMAKE_BUILD_TYPE=Release", "../"], stdout=log, stderr=log))
     wait(subprocess.Popen("make", stdout=log, stderr=log))
-    os.chdir(os.path.join(install_dir, ".."))
 
-    if not os.path.isfile(os.path.join(os.path.realpath("."), "rala")):
+    if not os.path.isfile(os.path.join(os.path.realpath("./bin"), "rala")):
         error("unable to compile Rala, check install.log file.")
     print("complete!")
 
