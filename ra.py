@@ -79,10 +79,14 @@ def ra_install():
 
     print("    compiling Rala ... ", end="", flush=True)
 
+    wait(subprocess.Popen(["mkdir", "-p", os.path.join(install_dir, "vendor/rala/build")], stdout=log, stderr=log))
     os.chdir(os.path.join(install_dir, "vendor/rala"))
     wait(subprocess.Popen(["git", "submodule", "init"], stdout=log, stderr=log))
     wait(subprocess.Popen(["git", "submodule", "update"], stdout=log, stderr=log))
+    os.chdir(os.path.join(install_dir, "vendor/rala/build"))
+    wait(subprocess.Popen(["cmake", "-DCMAKE_BUILD_TYPE=Release", "../"], stdout=log, stderr=log))
     wait(subprocess.Popen("make", stdout=log, stderr=log))
+    os.chdir(os.path.join(install_dir, ".."))
 
     if not os.path.isfile(os.path.join(os.path.realpath("."), "rala")):
         error("unable to compile Rala, check install.log file.")
