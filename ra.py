@@ -104,7 +104,7 @@ def ra_install():
 def ra_check_install():
     if not os.path.isfile(os.path.join(install_dir, "vendor/minimap/minimap")):
         error("run install before runnin Ra!")
-    if not os.path.isfile(os.path.join(install_dir, "vendor/rala/rala")):
+    if not os.path.isfile(os.path.join(install_dir, "vendor/rala/build/bin/rala")):
         error("run install before runnin Ra!")
     if not os.path.isfile(os.path.join(install_dir, "vendor/racon/bin/racon")):
         error("run install before runnin Ra!")
@@ -149,7 +149,7 @@ def ra(data_path, out_path, num_threads):
     start = time.time()
     layout_path = base + "_layout.fasta"
     with open(layout_path, "w") as f:
-        wait(subprocess.Popen([os.path.join(install_dir, "vendor/rala/rala"),
+        wait(subprocess.Popen([os.path.join(install_dir, "vendor/rala/build/bin/rala"),
             "0", formatted_data_path, overlaps_path, "1"], stdout=f, stderr=log))
 
     end = time.time()
