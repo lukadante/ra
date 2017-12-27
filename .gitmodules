@@ -7,3 +7,6 @@
 [submodule "vendor/minimap"]
 	path = vendor/minimap
 	url = https://github.com/lh3/minimap
+[submodule "vendor/mc"]
+	path = vendor/mc
+	url = https://github.com/lukadante/mc
